@@ -19,12 +19,12 @@ export function Contact() {
     {
       icon: Mail,
       title: "Email",
-      details: ["info@cholasports.in", "admissions@cholasports.in"],
+      details: ["cholafootballclub@gmail.com"],
     },
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 98765 43210", "+91 98765 43211"],
+      details: ["+91 89255 18891", "+91 73588 44516"],
     },
     {
       icon: MapPin,
@@ -188,7 +188,7 @@ export function Contact() {
                 <div className="text-center">
                   <MapPin className="text-[#FF6B35] mx-auto mb-3" size={48} />
                   <p className="text-gray-300">Chola FC Sports Complex</p>
-                  <p className="text-gray-400 text-sm">Anna Nagar, Chennai</p>
+                  <p className="text-gray-400 text-sm">Erode, Tamil Nadu</p>
                 </div>
               </div>
 

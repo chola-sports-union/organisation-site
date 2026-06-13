@@ -83,12 +83,7 @@ export function Navbar() {
                   )}
                 </Link>
               ))}
-              <Link
-                to="/join"
-                className="px-6 py-2.5 bg-gradient-to-r from-[#FF6B35] to-[#FFB800] text-[#12172E] font-medium rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Join Now
-              </Link>
+
             </div>
           </div>
         </div>
@@ -128,13 +123,7 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Link
-            to="/join"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block mt-2 px-6 py-3 bg-gradient-to-r from-[#FF6B35] to-[#FFB800] text-[#12172E] font-semibold rounded-xl text-center"
-          >
-            Join Now
-          </Link>
+
         </div>
       </div>
     </>

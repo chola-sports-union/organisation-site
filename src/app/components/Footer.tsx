@@ -26,28 +26,13 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://facebook.com"
+                href="https://www.instagram.com/chola_football_club/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 hover:bg-[#FF6B35] rounded-lg flex items-center justify-center transition-colors"
-              >
-                <Facebook size={20} className="text-white" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="w-10 h-10 bg-white/5 hover:bg-[#FF6B35] rounded-lg flex items-center justify-center transition-colors"
               >
                 <Instagram size={20} className="text-white" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 hover:bg-[#FF6B35] rounded-lg flex items-center justify-center transition-colors"
-              >
-                <Twitter size={20} className="text-white" />
               </a>
             </div>
           </div>
@@ -85,11 +70,11 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-gray-400">
                 <Mail size={20} className="text-[#FF6B35] mt-0.5 flex-shrink-0" />
-                <span>info@cholasports.in</span>
+                <a href="mailto:cholafootballclub@gmail.com" className="hover:text-[#FF6B35] transition-colors">cholafootballclub@gmail.com</a>
               </li>
               <li className="flex items-start gap-3 text-gray-400">
                 <Phone size={20} className="text-[#FF6B35] mt-0.5 flex-shrink-0" />
-                <span>+91 98765 43210</span>
+                <a href="tel:+918925518891" className="hover:text-[#FF6B35] transition-colors">+91 89255 18891</a>
               </li>
               <li className="flex items-start gap-3 text-gray-400">
                 <MapPin size={20} className="text-[#FF6B35] mt-0.5 flex-shrink-0" />
