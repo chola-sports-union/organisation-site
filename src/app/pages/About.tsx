@@ -1,5 +1,6 @@
 import { Trophy, Target, Heart, Award } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { SEO } from "../components/SEO";
 
 export function About() {
   const values = [
@@ -54,6 +55,11 @@ export function About() {
 
   return (
     <div className="min-h-screen md:pt-20">
+      <SEO
+        title="About Chola FC | Football Academy in Erode"
+        description="Learn about Chola FC's vision, mission, coaches, values, and achievements."
+        canonicalUrl="https://www.cholafc.com/about"
+      />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-[#0A0E27] to-[#12172E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

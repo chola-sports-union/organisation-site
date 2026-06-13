@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Clock, Users, Calendar, ArrowRight, CheckCircle } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { SEO } from "../components/SEO";
 
 export function Programs() {
   const programs = [
@@ -102,6 +103,11 @@ export function Programs() {
 
   return (
     <div className="min-h-screen md:pt-20">
+      <SEO
+        title="Football Training Programs | Chola FC"
+        description="Explore junior, youth elite, and professional football training programs offered by Chola FC."
+        canonicalUrl="https://www.cholafc.com/programs"
+      />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-[#0A0E27] to-[#12172E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

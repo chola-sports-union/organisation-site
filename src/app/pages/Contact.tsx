@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
+import { SEO } from "../components/SEO";
 
 export function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -39,6 +40,11 @@ export function Contact() {
 
   return (
     <div className="min-h-screen md:pt-20 bg-[#0A0E27]">
+      <SEO
+        title="Contact Chola FC | Football Academy in Erode"
+        description="Get in touch with Chola FC for enquiries, registrations, and football coaching information."
+        canonicalUrl="https://www.cholafc.com/contact"
+      />
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-br from-[#0A0E27] to-[#12172E]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

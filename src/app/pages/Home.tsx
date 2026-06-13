@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight, Trophy, Users, Target, Star } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { SEO } from "../components/SEO";
 
 export function Home() {
   const programs = [
@@ -54,6 +55,11 @@ export function Home() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Chola FC | Football Academy in Erode | Excellence in Sports"
+        description="Chola FC is a premier football academy in Erode offering professional football training, youth development programs, and elite coaching."
+        canonicalUrl="https://www.cholafc.com/"
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E27] via-[#0A0E27]/95 to-transparent z-10" />

@@ -5,6 +5,7 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Textarea } from "../components/ui/textarea";
+import { SEO } from "../components/SEO";
 
 export function Join() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -18,6 +19,11 @@ export function Join() {
   if (formSubmitted) {
     return (
       <div className="min-h-screen md:pt-20 flex items-center justify-center bg-[#0A0E27]">
+        <SEO
+          title="Join Chola FC | Register for Football Training"
+          description="Apply for Chola FC football programs and start your journey with professional coaching."
+          canonicalUrl="https://www.cholafc.com/join"
+        />
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-[#12172E] border border-white/10 rounded-2xl p-12">
             <div className="w-20 h-20 bg-gradient-to-br from-[#FF6B35] to-[#FFB800] rounded-full flex items-center justify-center mx-auto mb-6">
@@ -46,6 +52,11 @@ export function Join() {
 
   return (
     <div className="min-h-screen md:pt-20 bg-[#0A0E27]">
+      <SEO
+        title="Join Chola FC | Register for Football Training"
+        description="Apply for Chola FC football programs and start your journey with professional coaching."
+        canonicalUrl="https://www.cholafc.com/join"
+      />
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-br from-[#0A0E27] to-[#12172E]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

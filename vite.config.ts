@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import Sitemap from 'vite-plugin-sitemap'
 
 // Resolves Figma Make specific protocols to standard local paths
 function figmaMakePlugin() {
@@ -42,6 +43,10 @@ export default defineConfig({
     figmaMakePlugin(),
     react(),
     tailwindcss(),
+    Sitemap({
+      hostname: 'https://www.cholafc.com',
+      dynamicRoutes: ['/about', '/programs', '/contact', '/join'],
+    }),
   ],
   resolve: {
     alias: {
