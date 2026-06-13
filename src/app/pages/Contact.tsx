@@ -127,7 +127,7 @@ export function Contact() {
                     id="phone"
                     type="tel"
                     className="mt-2 bg-[#12172E] border-white/10 text-white"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 89255 18891"
                   />
                 </div>
 
@@ -188,7 +188,7 @@ export function Contact() {
                 <div className="text-center">
                   <MapPin className="text-[#FF6B35] mx-auto mb-3" size={48} />
                   <p className="text-gray-300">Chola FC Sports Complex</p>
-                  <p className="text-gray-400 text-sm">Erode, Tamil Nadu</p>
+                  <p className="text-gray-400 text-sm">Anna Nagar, Chennai</p>
                 </div>
               </div>
 
@@ -231,11 +231,11 @@ export function Contact() {
                   tour of our campus and meet our coaching staff.
                 </p>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+918925518891"
                   className="inline-flex items-center gap-2 text-white hover:underline"
                 >
                   <Phone size={18} />
-                  +91 98765 43210
+                  +91 89255 18891
                 </a>
               </div>
             </div>
