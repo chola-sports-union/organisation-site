@@ -101,7 +101,7 @@ export function Programs() {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen md:pt-20">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-[#0A0E27] to-[#12172E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
