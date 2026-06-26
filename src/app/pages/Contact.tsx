@@ -41,7 +41,7 @@ export function Contact() {
   return (
     <div className="min-h-screen md:pt-20 bg-[#0A0E27]">
       <SEO
-        title="Contact Chola FC | Football Academy in Erode"
+        title="Contact Chola FC"
         description="Get in touch with Chola FC for enquiries, registrations, and football coaching information."
         canonicalUrl="https://www.cholafc.com/contact"
       />

@@ -56,8 +56,8 @@ export function Home() {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Chola FC | Football Academy in Erode | Excellence in Sports"
-        description="Chola FC is a premier football academy in Erode offering professional football training, youth development programs, and elite coaching."
+        title="Chola FC | Excellence in Sports"
+        description="Chola FC is a premier football academy offering professional football training, youth development programs, and elite coaching."
         canonicalUrl="https://www.cholafc.com/"
       />
       {/* Hero Section */}

@@ -56,7 +56,7 @@ export function About() {
   return (
     <div className="min-h-screen md:pt-20">
       <SEO
-        title="About Chola FC | Football Academy in Erode"
+        title="About Chola FC"
         description="Learn about Chola FC's vision, mission, coaches, values, and achievements."
         canonicalUrl="https://www.cholafc.com/about"
       />
