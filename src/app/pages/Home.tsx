@@ -120,8 +120,18 @@ export function Home() {
       {/* About Preview */}
       <section className="py-20 bg-[#0A0E27]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid max-[1199px]:grid-cols-1 min-[1200px]:grid-cols-2 gap-12 items-center">
+            <div className="min-[1200px]:order-2 relative w-full">
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#FF6B35] to-[#FFB800] rounded-2xl blur-2xl opacity-20" />
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/9]">
+                <ImageWithFallback
+                  src="/home-about.png"
+                  alt="Chola FC teams"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="min-[1200px]:order-1">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Where Passion Meets
                 <span className="block text-[#FF6B35]">Excellence</span>
@@ -143,14 +153,6 @@ export function Home() {
                 Learn More About Us
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </Link>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#FF6B35] to-[#FFB800] rounded-2xl blur-2xl opacity-20" />
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1771257807779-a72e74deaa11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0aCUyMGZvb3RiYWxsJTIwdHJhaW5pbmd8ZW58MXx8fHwxNzczODYwMjM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Youth football training"
-                className="relative rounded-2xl w-full h-[500px] object-cover"
-              />
             </div>
           </div>
         </div>
