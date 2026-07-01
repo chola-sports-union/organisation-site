@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ArrowRight, Trophy, Users, Target, Star } from "lucide-react";
+import { ArrowRight, Trophy, Users, Target } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { SEO } from "../components/SEO";
 
@@ -9,19 +9,19 @@ export function Home() {
       title: "Junior Development",
       age: "10-14 years",
       description: "Foundation building with focus on basic skills and teamwork",
-      icon: "⚽",
+      icon: "01",
     },
     {
       title: "Youth Elite",
       age: "15-18 years",
       description: "Advanced training for competitive football at state level",
-      icon: "🏆",
+      icon: "02",
     },
     {
       title: "Professional Track",
       age: "19-25 years",
       description: "Elite program preparing athletes for professional careers",
-      icon: "⭐",
+      icon: "03",
     },
   ];
 
@@ -256,11 +256,7 @@ export function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-[#0A0E27] border border-white/10 rounded-2xl p-8">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="text-[#FFB800] fill-[#FFB800]" size={20} />
-                  ))}
-                </div>
+
                 <p className="text-gray-300 mb-6 italic">"{testimonial.content}"</p>
                 <div>
                   <div className="text-white font-bold">{testimonial.name}</div>

@@ -221,24 +221,24 @@ export function About() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">🏆</div>
-              <h3 className="text-2xl font-bold text-white mb-3">12 State Championships</h3>
+              <div className="text-3xl font-bold text-white mb-4">12</div>
+              <h3 className="text-2xl font-bold text-white mb-3">State Championships</h3>
               <p className="text-gray-300">
                 Our teams have dominated state-level competitions across multiple age groups
               </p>
             </div>
 
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">⭐</div>
-              <h3 className="text-2xl font-bold text-white mb-3">25+ Professional Athletes</h3>
+              <div className="text-3xl font-bold text-white mb-4">25+</div>
+              <h3 className="text-2xl font-bold text-white mb-3">Professional Athletes</h3>
               <p className="text-gray-300">
                 Chola FC alumni playing at professional and semi-professional levels
               </p>
             </div>
 
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">🎓</div>
-              <h3 className="text-2xl font-bold text-white mb-3">100% Academic Support</h3>
+              <div className="text-3xl font-bold text-white mb-4">100%</div>
+              <h3 className="text-2xl font-bold text-white mb-3">Academic Support</h3>
               <p className="text-gray-300">
                 All our athletes maintain excellent academic performance alongside sports
               </p>

@@ -256,37 +256,37 @@ export function Programs() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">🎽</div>
+              <div className="text-3xl font-bold text-white mb-4">Kit</div>
               <h3 className="text-xl font-bold text-white mb-3">Official Kit</h3>
               <p className="text-gray-300">Complete training kit including jersey and equipment</p>
             </div>
 
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">📊</div>
+              <div className="text-3xl font-bold text-white mb-4">Data</div>
               <h3 className="text-xl font-bold text-white mb-3">Performance Tracking</h3>
               <p className="text-gray-300">Regular assessments and progress reports</p>
             </div>
 
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">🏥</div>
+              <div className="text-3xl font-bold text-white mb-4">Med</div>
               <h3 className="text-xl font-bold text-white mb-3">Injury Prevention</h3>
               <p className="text-gray-300">Access to sports physiotherapy and medical support</p>
             </div>
 
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">🏆</div>
+              <div className="text-3xl font-bold text-white mb-4">Play</div>
               <h3 className="text-xl font-bold text-white mb-3">Tournament Access</h3>
               <p className="text-gray-300">Opportunities to compete at various levels</p>
             </div>
 
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">👨‍👩‍👧‍👦</div>
+              <div className="text-3xl font-bold text-white mb-4">Home</div>
               <h3 className="text-xl font-bold text-white mb-3">Parent Engagement</h3>
               <p className="text-gray-300">Regular updates and parent-coach meetings</p>
             </div>
 
             <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">🎓</div>
+              <div className="text-3xl font-bold text-white mb-4">Life</div>
               <h3 className="text-xl font-bold text-white mb-3">Holistic Development</h3>
               <p className="text-gray-300">Life skills and academic support alongside sports</p>
             </div>
