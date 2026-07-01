@@ -96,24 +96,25 @@ export function About() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                 <p>
-                  Founded in 2015, Chola FC emerged from a simple yet powerful vision:
-                  to create a platform where young Indian athletes could receive world-class
-                  training without having to leave their homeland.
+                  Founded in 2015, Chola FC was established with a simple vision: to create an
+                  environment where young footballers can develop their skills, build confidence,
+                  and enjoy the game through quality coaching.
                 </p>
                 <p>
-                  What started as a small football academy in Chennai has grown into one of
-                  India's most respected football clubs, nurturing over 500 athletes across
-                  multiple age groups and skill levels.
+                  Over the years, the club has grown into a community of 100+ registered players,
+                  offering structured training across multiple age groups under the guidance of
+                  a dedicated coaching team. Every training session is focused on developing
+                  technical ability, tactical understanding, physical fitness, and sportsmanship.
                 </p>
                 <p>
-                  Our name pays homage to the great Chola dynasty, known for their excellence,
-                  innovation, and lasting impact. We carry forward this legacy by building
-                  champions who embody these same principles in the world of sports.
+                  Inspired by the rich legacy of the Chola dynasty, our name represents excellence,
+                  discipline, and continuous growth. These values shape everything we do, both on
+                  and off the field.
                 </p>
                 <p>
-                  Today, Chola FC is proud to partner with over 50 schools and clubs across Tamil Nadu,
-                  producing state champions and creating pathways for young athletes to pursue
-                  their dreams at the highest levels.
+                  Today, Chola FC operates across multiple training venues, providing a safe and
+                  supportive environment where players of all skill levels can learn, improve, and
+                  pursue their passion for football.
                 </p>
               </div>
             </div>
@@ -125,23 +126,20 @@ export function About() {
       <section className="py-20 bg-[#12172E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-gradient-to-br from-[#FF6B35] to-[#FFB800] p-12 rounded-2xl">
-              <h2 className="text-4xl font-bold text-white mb-6">Our Vision</h2>
-              <p className="text-white/90 text-lg leading-relaxed">
-                To be India's leading sports organization, recognized globally for developing
-                world-class athletes who embody excellence, integrity, and sportsmanship. We
-                envision a future where every young athlete has access to the training, mentorship,
-                and opportunities needed to reach their full potential.
+            <div className="bg-[#0A0E27] border border-white/10 p-12 rounded-2xl flex flex-col">
+              <h2 className="text-4xl font-bold text-white mb-6">Vision</h2>
+              <p className="text-gray-300 text-lg leading-relaxed flex-1">
+                To contribute to the development of Indian football by nurturing disciplined,
+                confident, and skilled players who embody excellence, teamwork, and sportsmanship.
               </p>
             </div>
 
-            <div className="bg-[#0A0E27] border border-white/10 p-12 rounded-2xl">
-              <h2 className="text-4xl font-bold text-white mb-6">Our Mission</h2>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                To provide comprehensive, scientifically-backed sports training programs that
-                develop not just athletic ability, but also character, discipline, and life skills.
-                We are committed to creating an inclusive environment where every athlete,
-                regardless of background, can pursue their sporting dreams.
+            <div className="bg-[#0A0E27] border border-white/10 p-12 rounded-2xl flex flex-col">
+              <h2 className="text-4xl font-bold text-white mb-6">Mission</h2>
+              <p className="text-gray-300 text-lg leading-relaxed flex-1">
+                To provide quality grassroots football coaching through structured training,
+                qualified coaches, and a safe, inclusive environment that enables every player
+                to learn, grow, and enjoy the game.
               </p>
             </div>
           </div>
