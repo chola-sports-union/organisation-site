@@ -47,10 +47,10 @@ export function Home() {
   ];
 
   const stats = [
-    { number: "500+", label: "Active Athletes" },
-    { number: "15+", label: "Expert Coaches" },
-    { number: "50+", label: "Partner Schools" },
-    { number: "12", label: "State Champions" },
+    { number: "100+", label: "Young Footballers" },
+    { number: "4+", label: "Coaching Staff" },
+    { number: "4+", label: "Age Groups" },
+    { number: "3+", label: "Training Venues" },
   ];
 
   return (
