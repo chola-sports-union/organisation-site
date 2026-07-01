@@ -81,14 +81,16 @@ export function About() {
       {/* Our Story */}
       <section className="py-20 bg-[#0A0E27]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
+          <div className="grid max-[1199px]:grid-cols-1 min-[1200px]:grid-cols-2 gap-12 items-center">
+            <div className="relative w-full">
               <div className="absolute -inset-4 bg-gradient-to-r from-[#FF6B35] to-[#FFB800] rounded-2xl blur-2xl opacity-20" />
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1551390415-0de411440ca3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjB0ZWFtJTIwY2VsZWJyYXRpb258ZW58MXx8fHwxNzczODYwMjM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Soccer team celebration"
-                className="relative rounded-2xl w-full h-[500px] object-cover"
-              />
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/9]">
+                <ImageWithFallback
+                  src="/story.png"
+                  alt="Chola FC teams"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
             </div>
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Story</h2>
