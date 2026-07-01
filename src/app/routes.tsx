@@ -6,10 +6,19 @@ import { About } from "./pages/About";
 import { Programs } from "./pages/Programs";
 import { Join } from "./pages/Join";
 import { Contact } from "./pages/Contact";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
+
+function ScrollToTop() {
+  const location = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [location.key]);
+  return null;
+}
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen dark">
+      <ScrollToTop />
       <Navbar />
       {children}
       <Footer />
