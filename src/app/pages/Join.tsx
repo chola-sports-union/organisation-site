@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -7,16 +7,160 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Textarea } from "../components/ui/textarea";
 import { SEO } from "../components/SEO";
 
-export function Join() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+interface FormData {
+  firstName: string;
+  lastName: string;
+  dob: string;
+  gender: string;
+  email: string;
+  phone: string;
+  address: string;
+  guardianName: string;
+  guardianPhone: string;
+  program: string;
+  experience: string;
+  school: string;
+  medical: string;
+  message: string;
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    // In a real application, form data would be sent to a server
+interface SuccessResult {
+  applicationId: string;
+}
+
+export function Join() {
+  const [form, setForm] = useState<FormData>({
+    firstName: "",
+    lastName: "",
+    dob: "",
+    gender: "",
+    email: "",
+    phone: "",
+    address: "",
+    guardianName: "",
+    guardianPhone: "",
+    program: "",
+    experience: "",
+    school: "",
+    medical: "",
+    message: "",
+  });
+
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState<SuccessResult | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  const set = (field: keyof FormData) => (value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    setFieldErrors((prev) => ({ ...prev, [field]: "" }));
+    setError("");
   };
 
-  if (formSubmitted) {
+  const rules: { field: keyof FormData; validate: (f: FormData) => string | null }[] = [
+    { field: "firstName", validate: (f) => !f.firstName.trim() ? "First name is required." : null },
+    { field: "lastName", validate: (f) => !f.lastName.trim() ? "Last name is required." : null },
+    { field: "dob", validate: (f) => !f.dob ? "Date of birth is required." : null },
+    { field: "gender", validate: (f) => !f.gender ? "Gender is required." : null },
+    { field: "email", validate: (f) => !f.email.trim() ? "Email is required." : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim()) ? "Invalid email address." : null },
+    { field: "phone", validate: (f) => !f.phone.trim() ? "Phone is required." : f.phone.replace(/\D/g, "").length !== 10 ? "Phone must be exactly 10 digits." : null },
+    { field: "address", validate: (f) => !f.address.trim() ? "Address is required." : null },
+    { field: "program", validate: (f) => !f.program ? "Program is required." : null },
+    { field: "experience", validate: (f) => !f.experience ? "Experience level is required." : null },
+  ];
+
+  const validate = (): boolean => {
+    const errors: Record<string, string> = {};
+
+    for (const { field, validate: fn } of rules) {
+      const err = fn(form);
+      if (err) errors[field] = err;
+    }
+
+    if (form.dob) {
+      const age = Math.floor((Date.now() - new Date(form.dob).getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+      if (age < 18) {
+        if (!form.guardianName.trim()) errors.guardianName = "Guardian name is required for minors.";
+        if (!form.guardianPhone.trim()) errors.guardianPhone = "Guardian phone is required for minors.";
+      }
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    if (!validate()) return;
+
+    setSubmitting(true);
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || "/api/v1/registrations";
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: form.firstName.trim(),
+          lastName: form.lastName.trim(),
+          dob: form.dob,
+          gender: form.gender,
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          address: form.address.trim(),
+          parentName: form.guardianName.trim() || undefined,
+          parentPhone: form.guardianPhone.trim() || undefined,
+          program: form.program,
+          experience: form.experience,
+          school: form.school.trim() || undefined,
+          medicalConditions: form.medical.trim() || undefined,
+          statementOfPurpose: form.message.trim() || undefined,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSuccess({ applicationId: data.applicationId });
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const resetForm = () => {
+    setForm({
+      firstName: "",
+      lastName: "",
+      dob: "",
+      gender: "",
+      email: "",
+      phone: "",
+      address: "",
+      guardianName: "",
+      guardianPhone: "",
+      program: "",
+      experience: "",
+      school: "",
+      medical: "",
+      message: "",
+    });
+    setFieldErrors({});
+    setError("");
+    setSuccess(null);
+  };
+
+  const FieldError = ({ field }: { field: keyof FormData }) =>
+    fieldErrors[field] ? <p className="text-red-400 text-sm mt-1">{fieldErrors[field]}</p> : null;
+
+  if (success) {
     return (
       <div className="min-h-screen md:pt-20 flex items-center justify-center bg-[#0A0E27]">
         <SEO
@@ -30,16 +174,16 @@ export function Join() {
               <CheckCircle className="text-white" size={40} />
             </div>
             <h2 className="text-4xl font-bold text-white mb-4">Registration Submitted!</h2>
+            {success.applicationId && (
+              <p className="text-[#FFB800] text-lg font-mono mb-4">
+                Application ID: {success.applicationId}
+              </p>
+            )}
             <p className="text-gray-300 text-lg mb-8">
-              Thank you for your interest in Chola FC. Our team will review your
-              application and contact you within 2-3 business days to discuss the next steps.
-            </p>
-            <p className="text-gray-400 mb-8">
-              In the meantime, feel free to explore our programs and facilities. We look forward to
-              welcoming you to the Chola FC family!
+              Thank you for registering with Chola FC. Our team will contact you within 2 working days.
             </p>
             <Button
-              onClick={() => setFormSubmitted(false)}
+              onClick={resetForm}
               className="bg-gradient-to-r from-[#FF6B35] to-[#FFB800] hover:opacity-90"
             >
               Submit Another Registration
@@ -87,10 +231,13 @@ export function Join() {
                     </Label>
                     <Input
                       id="firstName"
-                      required
+                      value={form.firstName}
+                      onChange={(e) => set("firstName")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="Enter first name"
                     />
+                    <FieldError field="firstName" />
                   </div>
                   <div>
                     <Label htmlFor="lastName" className="text-white">
@@ -98,10 +245,13 @@ export function Join() {
                     </Label>
                     <Input
                       id="lastName"
-                      required
+                      value={form.lastName}
+                      onChange={(e) => set("lastName")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="Enter last name"
                     />
+                    <FieldError field="lastName" />
                   </div>
                   <div>
                     <Label htmlFor="dob" className="text-white">
@@ -110,15 +260,18 @@ export function Join() {
                     <Input
                       id="dob"
                       type="date"
-                      required
+                      value={form.dob}
+                      onChange={(e) => set("dob")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                     />
+                    <FieldError field="dob" />
                   </div>
                   <div>
                     <Label htmlFor="gender" className="text-white">
                       Gender *
                     </Label>
-                    <Select required>
+                    <Select value={form.gender} onValueChange={set("gender")} disabled={submitting}>
                       <SelectTrigger className="mt-2 bg-[#0A0E27] border-white/10 text-white">
                         <SelectValue placeholder="Select gender" />
                       </SelectTrigger>
@@ -128,6 +281,7 @@ export function Join() {
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FieldError field="gender" />
                   </div>
                 </div>
               </div>
@@ -143,10 +297,13 @@ export function Join() {
                     <Input
                       id="email"
                       type="email"
-                      required
+                      value={form.email}
+                      onChange={(e) => set("email")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="your.email@example.com"
                     />
+                    <FieldError field="email" />
                   </div>
                   <div>
                     <Label htmlFor="phone" className="text-white">
@@ -155,10 +312,13 @@ export function Join() {
                     <Input
                       id="phone"
                       type="tel"
-                      required
+                      value={form.phone}
+                      onChange={(e) => set("phone")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="+91 89255 18891"
                     />
+                    <FieldError field="phone" />
                   </div>
                   <div className="md:col-span-2">
                     <Label htmlFor="address" className="text-white">
@@ -166,11 +326,14 @@ export function Join() {
                     </Label>
                     <Textarea
                       id="address"
-                      required
+                      value={form.address}
+                      onChange={(e) => set("address")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="Enter your full address"
                       rows={3}
                     />
+                    <FieldError field="address" />
                   </div>
                 </div>
               </div>
@@ -188,9 +351,13 @@ export function Join() {
                     </Label>
                     <Input
                       id="guardianName"
+                      value={form.guardianName}
+                      onChange={(e) => set("guardianName")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="Enter name"
                     />
+                    <FieldError field="guardianName" />
                   </div>
                   <div>
                     <Label htmlFor="guardianPhone" className="text-white">
@@ -199,9 +366,13 @@ export function Join() {
                     <Input
                       id="guardianPhone"
                       type="tel"
+                      value={form.guardianPhone}
+                      onChange={(e) => set("guardianPhone")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="+91 89255 18891"
                     />
+                    <FieldError field="guardianPhone" />
                   </div>
                 </div>
               </div>
@@ -214,7 +385,7 @@ export function Join() {
                     <Label htmlFor="program" className="text-white">
                       Select Program *
                     </Label>
-                    <Select required>
+                    <Select value={form.program} onValueChange={set("program")} disabled={submitting}>
                       <SelectTrigger className="mt-2 bg-[#0A0E27] border-white/10 text-white">
                         <SelectValue placeholder="Choose a program" />
                       </SelectTrigger>
@@ -225,12 +396,13 @@ export function Join() {
                         <SelectItem value="goalkeeper">Goalkeeper Specialist (12-25 years)</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FieldError field="program" />
                   </div>
                   <div>
                     <Label htmlFor="experience" className="text-white">
                       Football Experience *
                     </Label>
-                    <Select required>
+                    <Select value={form.experience} onValueChange={set("experience")} disabled={submitting}>
                       <SelectTrigger className="mt-2 bg-[#0A0E27] border-white/10 text-white">
                         <SelectValue placeholder="Select experience level" />
                       </SelectTrigger>
@@ -241,6 +413,7 @@ export function Join() {
                         <SelectItem value="expert">Expert (5+ years)</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FieldError field="experience" />
                   </div>
                 </div>
               </div>
@@ -255,6 +428,9 @@ export function Join() {
                     </Label>
                     <Input
                       id="school"
+                      value={form.school}
+                      onChange={(e) => set("school")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="Enter institution name"
                     />
@@ -265,6 +441,9 @@ export function Join() {
                     </Label>
                     <Textarea
                       id="medical"
+                      value={form.medical}
+                      onChange={(e) => set("medical")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="Please list any medical conditions, allergies, or special requirements"
                       rows={3}
@@ -276,6 +455,9 @@ export function Join() {
                     </Label>
                     <Textarea
                       id="message"
+                      value={form.message}
+                      onChange={(e) => set("message")(e.target.value)}
+                      disabled={submitting}
                       className="mt-2 bg-[#0A0E27] border-white/10 text-white"
                       placeholder="Tell us about your goals and aspirations"
                       rows={4}
@@ -284,13 +466,28 @@ export function Join() {
                 </div>
               </div>
 
+              {/* Error Message */}
+              {error && (
+                <div className="bg-red-900/30 border border-red-500/30 rounded-lg p-4 text-red-300 text-sm">
+                  {error}
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="pt-6">
                 <Button
                   type="submit"
+                  disabled={submitting}
                   className="w-full bg-gradient-to-r from-[#FF6B35] to-[#FFB800] hover:opacity-90 text-white py-6 text-lg"
                 >
-                  Submit Registration
+                  {submitting ? (
+                    <span className="flex items-center gap-2">
+                      <Loader2 className="animate-spin" size={20} />
+                      Submitting...
+                    </span>
+                  ) : (
+                    "Submit Registration"
+                  )}
                 </Button>
                 <p className="text-gray-400 text-sm text-center mt-4">
                   By submitting this form, you agree to our terms and conditions and consent to
