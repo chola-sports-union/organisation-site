@@ -1,4 +1,4 @@
-import { createLead } from "../../services/zoho";
+import { createLead } from "../../services/zoho.js";
 
 interface RegistrationBody {
   firstName: string;
