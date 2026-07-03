@@ -99,5 +99,32 @@ async function createLead(data: LeadData): Promise<{ id: string }> {
   return { id: result.data[0]?.id };
 }
 
-export { getAccessToken, createLead };
+async function checkDuplicateLead(email: string, phone: string): Promise<boolean> {
+  const accessToken = await getAccessToken();
+
+  const criteria = `((Email:equals:${email})or(Phone:equals:${phone}))`;
+  const url = `https://www.zohoapis.in/crm/v8/Leads/search?criteria=${encodeURIComponent(criteria)}`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Zoho-oauthtoken ${accessToken}`,
+    },
+  });
+
+  // 200 OK means records were found (duplicate exists)
+  // 204 No Content means no records found (no duplicate)
+  if (response.status === 200) {
+    return true;
+  }
+
+  if (response.status === 204) {
+    return false;
+  }
+
+  const errorBody = await response.text();
+  throw new Error(`Zoho CRM duplicate check failed (${response.status}): ${errorBody}`);
+}
+
+export { getAccessToken, createLead, checkDuplicateLead };
 export type { LeadData };

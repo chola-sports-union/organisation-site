@@ -1,4 +1,4 @@
-import { createLead } from "../../services/zoho.js";
+import { createLead, checkDuplicateLead } from "../../services/zoho.js";
 
 interface RegistrationBody {
   firstName: string;
@@ -61,6 +61,12 @@ export default async function handler(req: any, res: any) {
     const validationError = validate(body);
     if (validationError) {
       res.status(400).json({ success: false, error: validationError });
+      return;
+    }
+
+    const isDuplicate = await checkDuplicateLead(body.email, body.phone);
+    if (isDuplicate) {
+      res.status(409).json({ success: false, error: "An application with this email or phone number already exists." });
       return;
     }
 
