@@ -1,4 +1,4 @@
-interface RegistrationData {
+interface LeadData {
   firstName: string;
   lastName: string;
   dob: string;
@@ -16,26 +16,16 @@ interface RegistrationData {
   source?: string;
 }
 
-interface ZohoRecordResult {
-  applicationId: string;
-  crmRecordId: string;
-}
-
-const accountsUrl = () => process.env.ZOHO_ACCOUNTS_URL || "https://accounts.zoho.in";
-const apiUrl = () => process.env.ZOHO_API_URL || "https://www.zohoapis.in";
-
 async function getAccessToken(): Promise<string> {
-  const params = new URLSearchParams({
-    client_id: process.env.ZOHO_CLIENT_ID!,
-    client_secret: process.env.ZOHO_CLIENT_SECRET!,
-    refresh_token: process.env.ZOHO_REFRESH_TOKEN!,
-    grant_type: "refresh_token",
-  });
-
-  const response = await fetch(`${accountsUrl()}/oauth/v2/token`, {
+  const response = await fetch("https://accounts.zoho.in/oauth/v2/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: params.toString(),
+    body: new URLSearchParams({
+      refresh_token: process.env.ZOHO_REFRESH_TOKEN!,
+      client_id: process.env.ZOHO_CLIENT_ID!,
+      client_secret: process.env.ZOHO_CLIENT_SECRET!,
+      grant_type: "refresh_token",
+    }),
   });
 
   const data = await response.json();
@@ -47,27 +37,9 @@ async function getAccessToken(): Promise<string> {
   return data.access_token;
 }
 
-async function searchByPhoneOrEmail(phone: string, email: string): Promise<boolean> {
+async function createLead(data: LeadData): Promise<{ id: string }> {
   const accessToken = await getAccessToken();
-  const module = process.env.ZOHO_MODULE || "Academy_Registrations";
 
-  const searchUrl = `${apiUrl()}/crm/v2/${module}/search?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}`;
-
-  const response = await fetch(searchUrl, {
-    headers: {
-      Authorization: `Zoho-oauthtoken ${accessToken}`,
-    },
-  });
-
-  if (response.status === 204) {
-    return false;
-  }
-
-  const data = await response.json();
-  return data.data && data.data.length > 0;
-}
-
-function mapFields(data: RegistrationData): Record<string, any> {
   const programLabels: Record<string, string> = {
     junior: "Junior Development",
     youth: "Youth Elite",
@@ -88,39 +60,34 @@ function mapFields(data: RegistrationData): Record<string, any> {
     other: "Other",
   };
 
-  return {
-    First_Name: data.firstName,
-    Last_Name: data.lastName,
-    Date_of_Birth: data.dob,
-    Gender: genderLabels[data.gender] || data.gender,
-    Email: data.email,
-    Phone: data.phone,
-    Address: data.address,
-    Guardian_Name: data.parentName || "",
-    Guardian_Phone: data.parentPhone || "",
-    Program: programLabels[data.program] || data.program,
-    Football_Experience: experienceLabels[data.experience] || data.experience,
-    School_Name: data.school || "",
-    Medical_Conditions: data.medicalConditions || "",
-    Motivation: data.statementOfPurpose || "",
-    Status: "New",
-    Source: data.source || "Website",
-  };
-}
-
-async function createRecord(data: RegistrationData): Promise<ZohoRecordResult> {
-  const accessToken = await getAccessToken();
-  const module = process.env.ZOHO_MODULE || "Academy_Registrations";
-
-  const fields = mapFields(data);
-
-  const response = await fetch(`${apiUrl()}/crm/v2/${module}`, {
+  const response = await fetch("https://www.zohoapis.in/crm/v8/Leads", {
     method: "POST",
     headers: {
       Authorization: `Zoho-oauthtoken ${accessToken}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ data: [fields] }),
+    body: JSON.stringify({
+      data: [
+        {
+          First_Name: data.firstName,
+          Last_Name: data.lastName,
+          Company: "CHOLA FC",
+          Email: data.email,
+          Phone: data.phone,
+          Date_Time_1: data.dob ? `${data.dob}T00:00:00+05:30` : "",
+          Gender: genderLabels[data.gender] || data.gender,
+          Guardian_Name: data.parentName || "",
+          Guardian_Phone: data.parentPhone || "",
+          School_Name: data.school || "",
+          Program: programLabels[data.program] || data.program,
+          Football_Experience: experienceLabels[data.experience] || data.experience,
+          Medical_conditions: data.medicalConditions || "",
+          Motivation: data.statementOfPurpose || "",
+          Street: data.address || "",
+          Lead_Source: data.source || "Website",
+        },
+      ],
+    }),
   });
 
   const result = await response.json();
@@ -129,12 +96,8 @@ async function createRecord(data: RegistrationData): Promise<ZohoRecordResult> {
     throw new Error(`Zoho CRM create failed: ${JSON.stringify(result)}`);
   }
 
-  const record = result.data[0];
-  return {
-    applicationId: record?.Application_ID || "",
-    crmRecordId: record?.id || "",
-  };
+  return { id: result.data[0]?.id };
 }
 
-export { getAccessToken, searchByPhoneOrEmail, createRecord };
-export type { RegistrationData, ZohoRecordResult };
+export { getAccessToken, createLead };
+export type { LeadData };

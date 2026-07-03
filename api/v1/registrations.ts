@@ -1,4 +1,4 @@
-import { createRecord, searchByPhoneOrEmail } from "../../services/zoho";
+import { createLead } from "../../services/zoho";
 
 interface RegistrationBody {
   firstName: string;
@@ -26,13 +26,11 @@ function validate(body: RegistrationBody): string | null {
     }
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(body.email.trim())) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) {
     return "Invalid email address.";
   }
 
-  const phoneDigits = body.phone.replace(/\D/g, "");
-  if (phoneDigits.length !== 10) {
+  if (body.phone.replace(/\D/g, "").length !== 10) {
     return "Phone number must be exactly 10 digits.";
   }
 
@@ -66,26 +64,11 @@ export default async function handler(req: any, res: any) {
       return;
     }
 
-    const normalizedPhone = body.phone.startsWith("+91") ? body.phone : `+91${body.phone.replace(/\D/g, "")}`;
-
-    const duplicate = await searchByPhoneOrEmail(normalizedPhone, body.email);
-    if (duplicate) {
-      res.status(409).json({
-        success: false,
-        error: "An applicant with this phone or email is already registered.",
-      });
-      return;
-    }
-
-    const result = await createRecord({
-      ...body,
-      phone: normalizedPhone,
-    });
+    const result = await createLead(body);
 
     res.status(201).json({
       success: true,
-      applicationId: result.applicationId,
-      crmRecordId: result.crmRecordId,
+      crmRecordId: result.id,
       message: "Registration submitted successfully.",
     });
   } catch (err: any) {

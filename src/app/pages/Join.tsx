@@ -25,7 +25,7 @@ interface FormData {
 }
 
 interface SuccessResult {
-  applicationId: string;
+  crmRecordId: string;
 }
 
 export function Join() {
@@ -127,7 +127,7 @@ export function Join() {
         return;
       }
 
-      setSuccess({ applicationId: data.applicationId });
+      setSuccess({ crmRecordId: data.crmRecordId });
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -174,9 +174,9 @@ export function Join() {
               <CheckCircle className="text-white" size={40} />
             </div>
             <h2 className="text-4xl font-bold text-white mb-4">Registration Submitted!</h2>
-            {success.applicationId && (
+            {success.crmRecordId && (
               <p className="text-[#FFB800] text-lg font-mono mb-4">
-                Application ID: {success.applicationId}
+                Registration ID: {success.crmRecordId}
               </p>
             )}
             <p className="text-gray-300 text-lg mb-8">
