@@ -1,6 +1,7 @@
 import { Trophy, Target, Heart, Award } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { SEO } from "../components/SEO";
+import { motion } from "motion/react";
 
 export function About() {
   const values = [
@@ -28,27 +29,15 @@ export function About() {
 
   const coaches = [
     {
-      name: "Rajesh Venkatesh",
+      name: "Mohan Prasanth B",
       role: "Head Coach",
-      credentials: "AFC Pro License, Former National Player",
+      credentials: "AIFF C License",
       image: "https://images.unsplash.com/photo-1574772135913-d519461c3996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGNvYWNoJTIwdHJhaW5pbmclMjBmaWVsZHxlbnwxfHx8fDE3NzM4NjAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     },
     {
-      name: "Priya Krishnan",
+      name: "Karthikeyan",
       role: "Youth Development Coach",
-      credentials: "UEFA B License, Sports Psychology Specialist",
-      image: "https://images.unsplash.com/photo-1574772135913-d519461c3996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGNvYWNoJTIwdHJhaW5pbmclMjBmaWVsZHxlbnwxfHx8fDE3NzM4NjAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      name: "Arjun Menon",
-      role: "Technical Director",
-      credentials: "FA Level 3, 15+ Years Coaching Experience",
-      image: "https://images.unsplash.com/photo-1574772135913-d519461c3996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGNvYWNoJTIwdHJhaW5pbmclMjBmaWVsZHxlbnwxfHx8fDE3NzM4NjAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      name: "Deepa Sharma",
-      role: "Fitness & Conditioning Coach",
-      credentials: "Certified Strength Coach, Former Athlete",
+      credentials: "AIFF D License",
       image: "https://images.unsplash.com/photo-1574772135913-d519461c3996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGNvYWNoJTIwdHJhaW5pbmclMjBmaWVsZHxlbnwxfHx8fDE3NzM4NjAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     },
   ];
@@ -57,7 +46,7 @@ export function About() {
     <div className="min-h-screen md:pt-20">
       <SEO
         title="About Chola FC"
-        description="Learn about Chola FC's vision, mission, coaches, values, and achievements."
+        description="Learn about Chola FC's vision, mission, coaches, values, and story."
         canonicalUrl="https://www.cholafc.com/about"
       />
       {/* Hero Section */}
@@ -183,8 +172,8 @@ export function About() {
               Expert professionals dedicated to your athletic development
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-10">
             {coaches.map((coach, index) => (
               <div
                 key={index}
@@ -206,41 +195,90 @@ export function About() {
               </div>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
-      {/* Achievements */}
-      <section className="py-20 bg-[#0A0E27]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Achievements</h2>
-            <p className="text-gray-300 text-lg">A legacy of excellence and success</p>
-          </div>
+      {/* Letter from Chola FC */}
+      <section className="relative py-32 overflow-hidden bg-gradient-to-b from-[#0A0E27] via-[#0D1130] to-[#0A0E27]">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+          <img
+            src="/logo.png"
+            alt=""
+            className="w-full max-w-[600px] opacity-[0.04] md:opacity-[0.06]"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
+            <motion.div
+              className="md:col-span-2"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <div className="flex items-start gap-6">
+                <div className="hidden md:block w-px h-32 bg-gradient-to-b from-[#FF6B35] to-transparent mt-2 shrink-0" />
+                <div>
+                  <span className="text-[#FF6B35] text-sm font-medium tracking-[0.2em] uppercase">
+                    A Letter from Chola FC
+                  </span>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 leading-tight">
+                    Every Journey
+                    <br />
+                    Begins with
+                    <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] to-[#FFB800]">
+                      One Step.
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-3xl font-bold text-white mb-4">12</div>
-              <h3 className="text-2xl font-bold text-white mb-3">State Championships</h3>
-              <p className="text-gray-300">
-                Our teams have dominated state-level competitions across multiple age groups
-              </p>
-            </div>
-
-            <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-3xl font-bold text-white mb-4">25+</div>
-              <h3 className="text-2xl font-bold text-white mb-3">Professional Athletes</h3>
-              <p className="text-gray-300">
-                Chola FC alumni playing at professional and semi-professional levels
-              </p>
-            </div>
-
-            <div className="bg-[#12172E] border border-white/10 rounded-2xl p-8 text-center">
-              <div className="text-3xl font-bold text-white mb-4">100%</div>
-              <h3 className="text-2xl font-bold text-white mb-3">Academic Support</h3>
-              <p className="text-gray-300">
-                All our athletes maintain excellent academic performance alongside sports
-              </p>
-            </div>
+            <motion.div
+              className="md:col-span-3"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            >
+              <div className="max-w-[600px] relative">
+                <span className="absolute -top-8 -left-4 text-7xl md:text-8xl leading-none text-[#FF6B35]/20 font-serif select-none">
+                  &ldquo;
+                </span>
+                <div className="text-gray-300 text-lg md:text-xl leading-[1.9] space-y-6 pl-2">
+                  <p>Dear Future Player,</p>
+                  <p>
+                    Every great footballer starts the same way.
+                    <br />
+                    Not with trophies.
+                    <br />
+                    Not with fame.
+                    <br />
+                    But with the courage to take the first step.
+                  </p>
+                  <p>
+                    At Chola FC, we believe talent grows through discipline, hard work, and the
+                    love of the game.
+                  </p>
+                  <p>
+                    Whether you're touching a football for the first time or dreaming of playing at
+                    the highest level, you'll always have a place to learn, improve, and belong.
+                  </p>
+                  <p className="!mt-8">
+                    <span className="text-2xl md:text-3xl font-bold text-[#FFB800]">
+                      Welcome to Chola FC.
+                    </span>
+                    <br />
+                    <span className="text-white text-xl md:text-2xl font-semibold">
+                      Let's build your journey together.
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
