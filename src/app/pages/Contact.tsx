@@ -192,37 +192,6 @@ export function Contact() {
                 </div>
               </div>
 
-              {/* Facility Info */}
-              <div className="bg-[#12172E] border border-white/10 rounded-2xl p-6 mb-6">
-                <h3 className="text-xl font-bold text-white mb-4">Facility Features</h3>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#FFB800] mt-1">•</span>
-                    <span>Full-size FIFA standard football field</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#FFB800] mt-1">•</span>
-                    <span>Indoor training facility</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#FFB800] mt-1">•</span>
-                    <span>Modern gymnasium and fitness center</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#FFB800] mt-1">•</span>
-                    <span>Video analysis room</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#FFB800] mt-1">•</span>
-                    <span>Medical and physiotherapy rooms</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#FFB800] mt-1">•</span>
-                    <span>Parent viewing area</span>
-                  </li>
-                </ul>
-              </div>
-
               {/* Visitor Info */}
               <div className="bg-gradient-to-br from-[#FF6B35] to-[#FFB800] rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-white mb-3">Schedule a Visit</h3>
@@ -295,8 +264,8 @@ export function Contact() {
                 Do you offer transportation services?
               </h3>
               <p className="text-gray-300">
-                We partner with select schools for transportation. Please contact us to discuss
-                transportation options for your location.
+                We provide transportation services for our athletes. Please contact us to discuss
+                options for your location.
               </p>
             </div>
           </div>

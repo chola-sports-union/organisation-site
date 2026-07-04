@@ -1,9 +1,26 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { ArrowRight, Trophy, Users, Target } from "lucide-react";
+import { ArrowRight, Trophy, Users, Target, ChevronDown } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { SEO } from "../components/SEO";
+import { motion } from "motion/react";
 
 export function Home() {
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+
+  useEffect(() => {
+    const checkConditions = () => {
+      setShowScrollIndicator(window.scrollY <= 40 && window.innerHeight >= 700 && window.innerWidth >= 360);
+    };
+    checkConditions();
+    const handleScroll = () => checkConditions();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", checkConditions);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkConditions);
+    };
+  }, []);
   const programs = [
     {
       title: "Junior Development",
@@ -61,7 +78,7 @@ export function Home() {
         canonicalUrl="https://www.cholafc.com/"
       />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[88vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E27] via-[#0A0E27]/95 to-transparent z-10" />
         <ImageWithFallback
           src="https://images.unsplash.com/photo-1569196272637-2a7d9b21119e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHBsYXllciUyMGFjdGlvbiUyMGRhcmt8ZW58MXx8fHwxNzczODYwMjM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -101,6 +118,17 @@ export function Home() {
             </div>
           </div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: showScrollIndicator ? 1 : 0, y: showScrollIndicator ? 0 : 10 }}
+          transition={{ duration: 0.4 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none md:hidden"
+        >
+          <span className="text-gray-400 text-xs tracking-[0.15em] uppercase">Explore More</span>
+          <ChevronDown className="text-gray-400 animate-bounce" size={18} />
+        </motion.div>
       </section>
 
       {/* Stats Section */}
