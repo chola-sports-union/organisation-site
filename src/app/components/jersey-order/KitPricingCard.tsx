@@ -29,11 +29,11 @@ export function KitPricingCard() {
             </div>
             <div className="p-2.5 bg-white/5 border border-white/10 rounded-lg">
               <div className="text-gray-300">Shorts</div>
-              <div className="text-white font-bold mt-1">₹285</div>
+              <div className="text-white font-bold mt-1">₹445</div>
             </div>
             <div className="p-2.5 bg-white/5 border border-white/10 rounded-lg">
               <div className="text-gray-300">Shockings</div>
-              <div className="text-white font-bold mt-1">₹445</div>
+              <div className="text-white font-bold mt-1">₹285</div>
             </div>
           </div>
         </div>

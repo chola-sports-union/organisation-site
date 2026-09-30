@@ -94,7 +94,7 @@ export function KitPackageSelector({
               />
               Shorts
             </label>
-            <span className="text-xs font-bold text-[#FFB800]">₹285</span>
+            <span className="text-xs font-bold text-[#FFB800]">₹445</span>
           </div>
 
           <div className="flex items-center justify-between p-2 rounded-lg bg-white/5">
@@ -106,7 +106,7 @@ export function KitPackageSelector({
               />
               Shockings
             </label>
-            <span className="text-xs font-bold text-[#FFB800]">₹445</span>
+            <span className="text-xs font-bold text-[#FFB800]">₹285</span>
           </div>
           {errors.items && <p className="text-xs text-red-400">{errors.items}</p>}
         </div>

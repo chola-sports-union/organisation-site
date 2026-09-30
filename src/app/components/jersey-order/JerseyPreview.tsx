@@ -6,6 +6,27 @@ interface JerseyPreviewProps {
 }
 
 export function JerseyPreview({ printingName, printingNumber }: JerseyPreviewProps) {
+  const nameText = printingName ? printingName.trim().toUpperCase() : "YOUR NAME";
+  const nameLength = nameText.length;
+  
+  // Calculate dynamic font size based on character count
+  let fontSize = 22;
+  let letterSpacing = "2";
+  
+  if (nameLength > 15) {
+    fontSize = 11;
+    letterSpacing = "0.5";
+  } else if (nameLength > 12) {
+    fontSize = 13;
+    letterSpacing = "1";
+  } else if (nameLength > 8) {
+    fontSize = 16;
+    letterSpacing = "1.5";
+  }
+
+  const numText = printingNumber ? printingNumber.trim() : "10";
+  const numFontSize = numText.length > 2 ? 65 : 90;
+
   return (
     <div className="bg-[#121A42] border border-white/10 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
       <div className="flex items-center justify-between mb-4">
@@ -57,31 +78,35 @@ export function JerseyPreview({ printingName, printingNumber }: JerseyPreviewPro
               CHOLA FC
             </text>
 
+            {/* Player Name with Dynamic Text Auto-Fitting */}
             <text 
               x="150" 
               y="145" 
               textAnchor="middle" 
               fill="#FFFFFF" 
-              fontSize="22" 
+              fontSize={fontSize} 
               fontWeight="900" 
-              letterSpacing="2"
+              letterSpacing={letterSpacing}
               fontFamily="sans-serif"
+              textLength={nameLength > 8 ? "125" : undefined}
+              lengthAdjust={nameLength > 8 ? "spacingAndGlyphs" : undefined}
             >
-              {printingName ? printingName.toUpperCase() : "YOUR NAME"}
+              {nameText}
             </text>
 
+            {/* Jersey Number */}
             <text 
               x="150" 
               y="245" 
               textAnchor="middle" 
               fill="url(#goldGrad)" 
-              fontSize="95" 
+              fontSize={numFontSize} 
               fontWeight="900"
               fontFamily="sans-serif"
               stroke="#000000"
               strokeWidth="2"
             >
-              {printingNumber ? printingNumber : "10"}
+              {numText}
             </text>
           </svg>
         </div>

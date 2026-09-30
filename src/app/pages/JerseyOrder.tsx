@@ -213,12 +213,10 @@ export function JerseyOrder() {
     };
 
     const webhookUrl = ENV.JERSEY_ORDER_WEBHOOK_URL;
-    console.log("Submitting order payload to webhook URL:", webhookUrl);
 
     if (!webhookUrl || !webhookUrl.startsWith("http")) {
-      console.error("CRITICAL ERROR: VITE_JERSEY_ORDER_WEBHOOK_URL is missing or invalid in environment!", webhookUrl);
       setFormErrors({ 
-        submit: "Configuration Error: VITE_JERSEY_ORDER_WEBHOOK_URL is missing in production. Please check Vercel Environment Variables." 
+        submit: "Failed to process order. Please try again later or contact support." 
       });
       setSubmitting(false);
       return;
@@ -233,8 +231,7 @@ export function JerseyOrder() {
       });
 
       setOrderSuccess({ orderId, total: feeDetails.total });
-    } catch (err) {
-      console.error("Order submit fetch error:", err);
+    } catch {
       setFormErrors({ submit: "Failed to process order. Please check your internet connection and try again." });
     } finally {
       setSubmitting(false);

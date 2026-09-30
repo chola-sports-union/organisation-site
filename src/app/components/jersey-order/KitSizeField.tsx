@@ -21,11 +21,12 @@ export function KitSizeField({ kitSize, setKitSize, errors }: KitSizeFieldProps)
           <SelectValue placeholder="Select Kit Size" />
         </SelectTrigger>
         <SelectContent className="bg-[#121A42] border-white/20 text-white">
-          <SelectItem value="Kids 26 (Age 6-8)">Kids 26 (Age 6-8)</SelectItem>
-          <SelectItem value="Kids 28 (Age 8-10)">Kids 28 (Age 8-10)</SelectItem>
-          <SelectItem value="Kids 30 (Age 10-12)">Kids 30 (Age 10-12)</SelectItem>
-          <SelectItem value="Kids 32 (Age 12-14)">Kids 32 (Age 12-14)</SelectItem>
-          <SelectItem value="XS (34)">Extra Small - XS (34")</SelectItem>
+          <SelectItem value="Kids 24 (Age 4-5 Yrs)">Kids 24 (Age 4-5 Yrs)</SelectItem>
+          <SelectItem value="Kids 26 (Age 6-7 Yrs)">Kids 26 (Age 6-7 Yrs)</SelectItem>
+          <SelectItem value="Kids 28 (Age 8-9 Yrs)">Kids 28 (Age 8-9 Yrs)</SelectItem>
+          <SelectItem value="Kids 30 (Age 10-11 Yrs)">Kids 30 (Age 10-11 Yrs)</SelectItem>
+          <SelectItem value="Kids 32 (Age 12-13 Yrs)">Kids 32 (Age 12-13 Yrs)</SelectItem>
+          <SelectItem value="XS (34) (Age 14-15 Yrs)">Extra Small - XS (34" / Age 14-15 Yrs)</SelectItem>
           <SelectItem value="S (36)">Small - S (36")</SelectItem>
           <SelectItem value="M (38)">Medium - M (38")</SelectItem>
           <SelectItem value="L (40)">Large - L (40")</SelectItem>

@@ -22,6 +22,6 @@ export const FULL_KIT_PRICE = 1199;
 
 export const SEPARATE_PRICES = {
   jersey: 485,
-  shorts: 285,
-  shockings: 445,
+  shorts: 445,
+  shockings: 285,
 } as const;

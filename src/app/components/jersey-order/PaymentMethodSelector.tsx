@@ -69,7 +69,7 @@ export function PaymentMethodSelector({
           </div>
           <div className="flex justify-between items-center text-xs text-gray-300">
             <span>Account Holder:</span>
-            <strong className="text-white">Chola Football Club</strong>
+            <strong className="text-white font-mono uppercase">CHOLAFCMOHAN PRASANTH</strong>
           </div>
           <div className="flex justify-between items-center text-xs text-gray-300">
             <span>Amount Payable:</span>
@@ -95,8 +95,8 @@ export function PaymentMethodSelector({
               className="mt-0.5 border-white/40 data-[state=checked]:bg-[#FF6B35]"
             />
             <label htmlFor="fee-paid-check" className="text-xs text-gray-200 cursor-pointer leading-snug">
-              <strong>11. Payment Confirmation:</strong> I confirm that I have transferred{" "}
-              <span className="text-[#FFB800] font-bold">₹{feeDetails.total}</span> to Chola Football Club (8925518891) via UPI. <span className="text-[#FF6B35]">*</span>
+              <strong>11. Review & Payment Confirmation:</strong> I have reviewed all player customization details (Printing Name, Jersey Number & Size). I confirm everything is accurate and transferred{" "}
+              <span className="text-[#FFB800] font-bold">₹{feeDetails.total}</span> to CHOLAFCMOHAN PRASANTH (8925518891) via UPI. <span className="text-[#FF6B35]">*</span>
             </label>
           </div>
           {errors.paidConfirmed && <p className="text-xs text-red-400 pl-1">{errors.paidConfirmed}</p>}

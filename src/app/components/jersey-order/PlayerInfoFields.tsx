@@ -36,12 +36,12 @@ export function PlayerInfoFields({
       {/* Field 1: Name */}
       <div className="space-y-1.5">
         <Label htmlFor="name" className="text-sm font-medium text-gray-200">
-          1. Full Name <span className="text-[#FF6B35]">*</span>
+          1. Player Full Name <span className="text-[#FF6B35]">*</span>
         </Label>
         <Input
           id="name"
           type="text"
-          placeholder="Enter your full name"
+          placeholder="Enter player's full name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="bg-[#0A0E27] border-white/15 text-white placeholder:text-gray-500 h-11 focus:border-[#FF6B35]"
