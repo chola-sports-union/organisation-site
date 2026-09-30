@@ -57,6 +57,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/order-kit" className="text-gray-400 hover:text-[#FF6B35] transition-colors">
+                  Order Official Kit
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-gray-400 hover:text-[#FF6B35] transition-colors">
                   Contact
                 </Link>

@@ -43,6 +43,7 @@ export function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Programs", path: "/programs" },
+    { name: "Order Kit", path: "/order-kit" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -83,7 +84,6 @@ export function Navbar() {
                   )}
                 </Link>
               ))}
-
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 interface SEOProps {
   title: string;
   description: string;
-  canonicalUrl: string;
+  canonicalUrl?: string;
   /** Optional: path to OG image (absolute URL). Defaults to the Chola FC logo. */
   ogImage?: string;
   /** Optional: JSON-LD structured data object. Merged on top of the default Organization schema. */
@@ -33,7 +33,7 @@ const ORGANIZATION_SCHEMA = {
 export function SEO({
   title,
   description,
-  canonicalUrl,
+  canonicalUrl = "https://www.cholafc.com",
   ogImage = DEFAULT_OG_IMAGE,
   structuredData,
 }: SEOProps) {

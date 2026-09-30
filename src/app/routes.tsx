@@ -6,6 +6,7 @@ import { About } from "./pages/About";
 import { Programs } from "./pages/Programs";
 import { Join } from "./pages/Join";
 import { Contact } from "./pages/Contact";
+import { JerseyOrder } from "./pages/JerseyOrder";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
@@ -81,6 +82,14 @@ export const router = createBrowserRouter([
     element: (
       <Layout>
         <Contact />
+      </Layout>
+    ),
+  },
+  {
+    path: "/order-kit",
+    element: (
+      <Layout>
+        <JerseyOrder />
       </Layout>
     ),
   },
