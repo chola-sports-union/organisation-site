@@ -52,7 +52,7 @@ export function Navbar() {
   return (
     <>
       {/* ── Desktop navbar ── always fixed, full-width */}
-      <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 bg-[#0A0E27]/95 backdrop-blur-sm border-b border-white/10">
+      <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 bg-[#0A0E27]/95 backdrop-blur-sm border-b border-white/10 print:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Brand */}
@@ -91,7 +91,7 @@ export function Navbar() {
 
       {/* ── Mobile: floating hamburger button (scroll-reveal) ── */}
       <div
-        className={`md:hidden fixed top-4 left-4 z-50 transition-all duration-300 ${
+        className={`md:hidden fixed top-4 left-4 z-50 transition-all duration-300 print:hidden ${
           hamVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
@@ -106,7 +106,7 @@ export function Navbar() {
 
       {/* ── Mobile: slide-down drawer ── */}
       <div
-        className={`md:hidden fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ${
+        className={`md:hidden fixed top-0 left-0 right-0 z-40 transition-transform duration-300 print:hidden ${
           mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >

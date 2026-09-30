@@ -4,7 +4,7 @@ import logoImage from "figma:asset/c99ae1da33620770f0b3857576d2e7512ef1ce15.png"
 
 export function Footer() {
   return (
-    <footer className="bg-[#05070F] border-t border-white/10">
+    <footer className="bg-[#05070F] border-t border-white/10 print:hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}

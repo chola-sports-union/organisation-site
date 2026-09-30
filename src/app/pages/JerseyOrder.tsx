@@ -248,7 +248,7 @@ export function JerseyOrder() {
 
       <div className="min-h-screen bg-[#0A0E27] pt-24 pb-20 text-white">
         {/* Header Hero Section */}
-        <div className="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#0F163D] to-[#0A0E27] py-12 px-4 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#0F163D] to-[#0A0E27] py-12 px-4 sm:px-6 lg:px-8 print:hidden">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FF6B35]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#FFB800]/10 rounded-full blur-3xl pointer-events-none" />
           
