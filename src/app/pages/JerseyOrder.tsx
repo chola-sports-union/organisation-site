@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { 
   Shirt, 
   Sparkles,
@@ -8,6 +8,7 @@ import {
 import { Button } from "../components/ui/button";
 import { SEO } from "../components/SEO";
 
+import { ENV } from "../config/env";
 import { 
   OrderType, 
   PaymentMethod, 
@@ -48,14 +49,21 @@ export function JerseyOrder() {
   });
 
   // Payment Mode & Confirmation
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("cashfree");
   const [paidConfirmed, setPaidConfirmed] = useState(false);
   const [upiRefNumber, setUpiRefNumber] = useState("");
+  const [screenshotFile, setScreenshotFile] = useState<File | null>(null);
+  const [screenshotPreview, setScreenshotPreview] = useState<string | null>(null);
 
   // Submission State
   const [submitting, setSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<OrderSuccessData | null>(null);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    if (orderSuccess) {
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    }
+  }, [orderSuccess]);
 
   // Dynamic Fee Details Calculation
   const feeDetails = useMemo(() => {
@@ -119,8 +127,12 @@ export function JerseyOrder() {
       errors.items = "Please select at least one item to order";
     }
 
-    if (paymentMethod === "manual_upi" && !paidConfirmed) {
+    if (!paidConfirmed) {
       errors.paidConfirmed = "Please confirm the payment checkbox to proceed";
+    }
+
+    if (!screenshotFile && !upiRefNumber.trim()) {
+      errors.verification = "Please attach a payment screenshot OR enter your 12-digit UTR reference number.";
     }
 
     setFormErrors(errors);
@@ -134,11 +146,55 @@ export function JerseyOrder() {
     setSubmitting(true);
     const orderId = "CHOLA-KIT-" + Math.floor(100000 + Math.random() * 900000);
 
+    let screenshotBase64 = "";
+    let screenshotName = "";
+
+    if (screenshotFile) {
+      screenshotName = screenshotFile.name;
+      try {
+        screenshotBase64 = await new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = () => resolve("");
+          reader.readAsDataURL(screenshotFile);
+        });
+      } catch {
+        screenshotBase64 = "";
+      }
+    }
+
+    const payload = {
+      orderId,
+      name: name.trim(),
+      gender,
+      birthYear,
+      phone: phone.trim(),
+      email: email.trim(),
+      printingName: printingName.trim().toUpperCase(),
+      printingNumber: printingNumber.trim(),
+      kitSize,
+      orderType,
+      itemsList: feeDetails.itemsList,
+      quantity,
+      total: feeDetails.total,
+      paymentMethod: "manual_upi",
+      paidConfirmed,
+      upiRefNumber: upiRefNumber.trim(),
+      screenshotBase64,
+      screenshotName,
+    };
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, paymentMethod === "cashfree" ? 1500 : 1200));
+      await fetch(ENV.JERSEY_ORDER_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+      });
+
       setOrderSuccess({ orderId, total: feeDetails.total });
     } catch {
-      setFormErrors({ submit: "Failed to process order. Please try again." });
+      setFormErrors({ submit: "Failed to process order. Please check your internet connection and try again." });
     } finally {
       setSubmitting(false);
     }
@@ -149,7 +205,7 @@ export function JerseyOrder() {
       <SEO
         title="Order Chola FC Official Jersey & Kit | Chola Football Club"
         description="Customize and order your official Chola FC jersey, shorts, and shockings with your custom printing name and number. Quick online & UPI payment options available."
-        canonicalUrl="https://www.cholafc.com/jersey-order"
+        canonicalUrl={`${ENV.SITE_URL}/jersey-order`}
       />
 
       <div className="min-h-screen bg-[#0A0E27] pt-24 pb-20 text-white">
@@ -254,13 +310,15 @@ export function JerseyOrder() {
                   <OrderSummaryCard feeDetails={feeDetails} quantity={quantity} />
 
                   <PaymentMethodSelector
-                    paymentMethod={paymentMethod}
-                    setPaymentMethod={setPaymentMethod}
                     feeDetails={feeDetails}
                     paidConfirmed={paidConfirmed}
                     setPaidConfirmed={setPaidConfirmed}
                     upiRefNumber={upiRefNumber}
                     setUpiRefNumber={setUpiRefNumber}
+                    screenshotFile={screenshotFile}
+                    setScreenshotFile={setScreenshotFile}
+                    screenshotPreview={screenshotPreview}
+                    setScreenshotPreview={setScreenshotPreview}
                     errors={formErrors}
                   />
 
@@ -274,7 +332,7 @@ export function JerseyOrder() {
                       <>Processing Order...</>
                     ) : (
                       <>
-                        {paymentMethod === "cashfree" ? "Proceed to Online Payment" : "Confirm & Place Kit Order"}
+                        Confirm & Place Kit Order
                         <ArrowRight size={18} />
                       </>
                     )}

@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { ENV } from "../config/env";
 
 interface SEOProps {
   title: string;
@@ -10,13 +11,13 @@ interface SEOProps {
   structuredData?: Record<string, unknown>;
 }
 
-const DEFAULT_OG_IMAGE = "https://www.cholafc.com/logo.png";
+const DEFAULT_OG_IMAGE = `${ENV.SITE_URL}/logo.png`;
 
 const ORGANIZATION_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "SportsOrganization",
   name: "Chola FC",
-  url: "https://www.cholafc.com",
+  url: ENV.SITE_URL,
   logo: DEFAULT_OG_IMAGE,
   description:
     "Chola FC is a premier football academy in Chennai offering professional football training, youth development programs, and elite coaching.",
@@ -33,7 +34,7 @@ const ORGANIZATION_SCHEMA = {
 export function SEO({
   title,
   description,
-  canonicalUrl = "https://www.cholafc.com",
+  canonicalUrl = ENV.SITE_URL,
   ogImage = DEFAULT_OG_IMAGE,
   structuredData,
 }: SEOProps) {
