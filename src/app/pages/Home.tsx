@@ -299,15 +299,14 @@ export function Home() {
             <p className="text-gray-300 text-lg">Trusted by students, parents, and institutions</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-[#0A0E27] border border-white/10 rounded-2xl p-8">
-
-                <p className="text-gray-300 mb-6 italic">"{testimonial.content}"</p>
-                <div>
-                  <div className="text-white font-bold">{testimonial.name}</div>
-                  <div className="text-[#FF6B35] text-sm">{testimonial.role}</div>
-                </div>
+          <div className="grid md:grid-cols-3 gap-8 items-start">
+            {[
+              "/reviews/image.png",
+              "/reviews/image copy 2.png",
+              "/reviews/image copy.png"
+            ].map((imgSrc, index) => (
+              <div key={index} className="rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform shadow-lg">
+                <img src={imgSrc} alt={`Review ${index + 1}`} className="w-full h-auto rounded-2xl" />
               </div>
             ))}
           </div>
