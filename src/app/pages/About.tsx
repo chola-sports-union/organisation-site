@@ -33,13 +33,27 @@ export function About() {
       role: "Head Coach",
       credentials: "AIFF C License",
       image: "/coaches/mohan.png",
-      imageClass: "object-cover object-top scale-[1.8] origin-top -translate-y-20",
+      imageClass: "object-cover object-top scale-[1.8] origin-top -translate-y-8",
     },
     {
       name: "Karthikeyan",
       role: "Youth Development Coach",
       credentials: "AIFF D License",
       image: "/coaches/karthikeyan.png",
+      imageClass: "object-cover object-top",
+    },
+    {
+      name: "Hari",
+      role: "Blue Cubs Leader",
+      credentials: "",
+      image: "/coaches/hari.png",
+      imageClass: "object-cover object-top",
+    },
+    {
+      name: "Deenan",
+      role: "Blue Cubs Leader",
+      credentials: "",
+      image: "/coaches/deenan.png",
       imageClass: "object-cover object-top",
     },
   ];
@@ -174,14 +188,14 @@ export function About() {
               Expert professionals dedicated to your athletic development
             </p>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {coaches.map((coach, index) => (
                 <div
                   key={index}
                   className="bg-[#0A0E27] border border-white/10 rounded-2xl overflow-hidden hover:border-[#FF6B35] transition-all group"
                 >
-                  <div className="relative h-80 overflow-hidden bg-[#0A0E27]">
+                  <div className="relative h-64 overflow-hidden bg-[#0A0E27]">
                     <ImageWithFallback
                       src={coach.image}
                       alt={coach.name}
