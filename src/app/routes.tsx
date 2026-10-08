@@ -7,6 +7,7 @@ import { Programs } from "./pages/Programs";
 import { Join } from "./pages/Join";
 import { Contact } from "./pages/Contact";
 import { JerseyOrder } from "./pages/JerseyOrder";
+import { Gallery } from "./pages/Gallery";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
@@ -90,6 +91,14 @@ export const router = createBrowserRouter([
     element: (
       <Layout>
         <JerseyOrder />
+      </Layout>
+    ),
+  },
+  {
+    path: "/gallery",
+    element: (
+      <Layout>
+        <Gallery />
       </Layout>
     ),
   },
