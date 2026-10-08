@@ -90,9 +90,9 @@ export function About() {
                   and enjoy the game through quality coaching.
                 </p>
                 <p>
-                  Over the years, the club has grown into a community of 100+ registered players,
-                  offering structured training across multiple age groups under the guidance of
-                  a dedicated coaching team. Every training session is focused on developing
+                  Over the years, the club has grown into a community of 200+ students,
+                  offering structured training across 8 age groups at 5+ training venues under the guidance of
+                  10+ coaching staff. Every training session is focused on developing
                   technical ability, tactical understanding, physical fitness, and sportsmanship.
                 </p>
                 <p>
@@ -174,27 +174,27 @@ export function About() {
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-10">
-            {coaches.map((coach, index) => (
-              <div
-                key={index}
-                className="bg-[#0A0E27] border border-white/10 rounded-2xl overflow-hidden hover:border-[#FF6B35] transition-all group"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <ImageWithFallback
-                    src={coach.image}
-                    alt={coach.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E27] via-transparent to-transparent" />
+              {coaches.map((coach, index) => (
+                <div
+                  key={index}
+                  className="bg-[#0A0E27] border border-white/10 rounded-2xl overflow-hidden hover:border-[#FF6B35] transition-all group"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <ImageWithFallback
+                      src={coach.image}
+                      alt={coach.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E27] via-transparent to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-1">{coach.name}</h3>
+                    <div className="text-[#FF6B35] mb-3">{coach.role}</div>
+                    <p className="text-gray-400 text-sm">{coach.credentials}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">{coach.name}</h3>
-                  <div className="text-[#FF6B35] mb-3">{coach.role}</div>
-                  <p className="text-gray-400 text-sm">{coach.credentials}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

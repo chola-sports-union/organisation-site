@@ -23,22 +23,40 @@ export function Home() {
   }, []);
   const programs = [
     {
-      title: "Junior Development",
-      age: "10-14 years",
+      title: "Grass Roots",
+      age: "U4 - U12",
       description: "Foundation building with focus on basic skills and teamwork",
       icon: "01",
     },
     {
-      title: "Youth Elite",
-      age: "15-18 years",
+      title: "Youth",
+      age: "U13 - U18",
       description: "Advanced training for competitive football at state level",
       icon: "02",
     },
     {
-      title: "Professional Track",
-      age: "19-25 years",
+      title: "Elite",
+      age: "U19 - U21",
       description: "Elite program preparing athletes for professional careers",
       icon: "03",
+    },
+    {
+      title: "Senior",
+      age: "U22 - U24",
+      description: "Professional development and senior level competition",
+      icon: "04",
+    },
+    {
+      title: "Super Senior",
+      age: "Above 24",
+      description: "Advanced tactical play and leadership for experienced players",
+      icon: "05",
+    },
+    {
+      title: "Parents Program",
+      age: "All Ages",
+      description: "Fun activities, fitness training, and awareness programs designed specifically for parents",
+      icon: "06",
     },
   ];
 
@@ -64,10 +82,10 @@ export function Home() {
   ];
 
   const stats = [
-    { number: "100+", label: "Young Footballers" },
-    { number: "4+", label: "Coaching Staff" },
-    { number: "4+", label: "Age Groups" },
-    { number: "3+", label: "Training Venues" },
+    { number: "200+", label: "Students" },
+    { number: "10+", label: "Coaching Staff" },
+    { number: "8", label: "Age Groups" },
+    { number: "5+", label: "Training Venues" },
   ];
 
   return (
@@ -85,7 +103,7 @@ export function Home() {
           alt="Football player in action"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        
+
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left py-8">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-2 bg-[#FF6B35]/20 border border-[#FF6B35] rounded-full mb-6">
@@ -200,14 +218,14 @@ export function Home() {
             {programs.map((program, index) => (
               <div
                 key={index}
-                className="bg-[#0A0E27] border border-white/10 rounded-2xl p-8 hover:border-[#FF6B35] transition-all group"
+                className="bg-[#0A0E27] border border-white/10 rounded-xl p-6 hover:border-[#FF6B35] transition-all group"
               >
-                <div className="text-5xl mb-4">{program.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#FF6B35] transition-colors">
+                <div className="text-4xl mb-3">{program.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#FF6B35] transition-colors">
                   {program.title}
                 </h3>
-                <div className="text-[#FFB800] mb-4">{program.age}</div>
-                <p className="text-gray-300 mb-6">{program.description}</p>
+                <div className="text-[#FFB800] mb-3 text-sm">{program.age}</div>
+                <p className="text-gray-300 mb-4 text-sm">{program.description}</p>
                 <Link
                   to="/programs"
                   className="inline-flex items-center gap-2 text-[#FF6B35] group-hover:gap-3 transition-all"
