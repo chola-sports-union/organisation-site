@@ -32,13 +32,15 @@ export function About() {
       name: "Mohan Prasanth B",
       role: "Head Coach",
       credentials: "AIFF C License",
-      image: "https://images.unsplash.com/photo-1574772135913-d519461c3996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGNvYWNoJTIwdHJhaW5pbmclMjBmaWVsZHxlbnwxfHx8fDE3NzM4NjAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/coaches/mohan.png",
+      imageClass: "object-cover object-top scale-[1.8] origin-top -translate-y-20",
     },
     {
       name: "Karthikeyan",
       role: "Youth Development Coach",
       credentials: "AIFF D License",
-      image: "https://images.unsplash.com/photo-1574772135913-d519461c3996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGNvYWNoJTIwdHJhaW5pbmclMjBmaWVsZHxlbnwxfHx8fDE3NzM4NjAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/coaches/karthikeyan.png",
+      imageClass: "object-cover object-top",
     },
   ];
 
@@ -179,13 +181,13 @@ export function About() {
                   key={index}
                   className="bg-[#0A0E27] border border-white/10 rounded-2xl overflow-hidden hover:border-[#FF6B35] transition-all group"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-80 overflow-hidden bg-[#0A0E27]">
                     <ImageWithFallback
                       src={coach.image}
                       alt={coach.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className={`w-full h-full ${coach.imageClass || 'object-cover object-top'}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E27] via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-[#0A0E27] to-transparent" />
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-white mb-1">{coach.name}</h3>
