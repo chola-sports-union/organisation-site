@@ -6,80 +6,113 @@ import { SEO } from "../components/SEO";
 export function Programs() {
   const programs = [
     {
-      title: "Junior Development Program",
+      title: "Grass Roots",
       subtitle: "Building Strong Foundations",
-      age: "10-14 years",
+      age: "U4 - U12",
       level: "Beginner to Intermediate",
-      duration: "12 months",
+      duration: "1 hour/session",
       sessions: "3 sessions/week",
-      image: "https://images.unsplash.com/photo-1771257807779-a72e74deaa11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0aCUyMGZvb3RiYWxsJTIwdHJhaW5pbmd8ZW58MXx8fHwxNzczODYwMjM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      description: "Perfect for young athletes starting their football journey. Focus on fundamental skills, teamwork, and developing a love for the game.",
+      image: "/programs/grassroots.jpeg",
+      imageClass: "scale-[1.2] origin-center",
+      description: "Foundation building with a focus on basic skills, coordination, and teamwork. Perfect for young athletes starting their football journey.",
       features: [
         "Basic ball control and dribbling",
-        "Introduction to tactical awareness",
+        "Fun, game-based learning",
         "Age-appropriate fitness training",
         "Team building activities",
         "Character development",
-        "Progress tracking and reports",
       ],
-      price: "₹4,500/month",
+      price: "₹1,840/month",
     },
     {
-      title: "Youth Elite Program",
+      title: "Youth",
       subtitle: "Competitive Excellence",
-      age: "15-18 years",
+      age: "U13 - U18",
       level: "Intermediate to Advanced",
-      duration: "12 months",
-      sessions: "4-5 sessions/week",
-      image: "https://images.unsplash.com/photo-1761225092045-698d1c4a9f43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHNvY2NlciUyMHBsYXllciUyMHNraWxsc3xlbnwxfHx8fDE3NzM4NjAyNDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      description: "Advanced training for serious athletes competing at district and state levels. Prepare for higher levels of competition.",
+      duration: "1.5 hours/session",
+      sessions: "4 sessions/week",
+      image: "/programs/youth.png",
+      imageClass: "scale-[1.2] origin-center",
+      description: "Advanced training for competitive football at the district and state levels. Focuses on tactical awareness and physical conditioning.",
       features: [
         "Advanced technical skills",
         "Tactical and strategic training",
         "Position-specific coaching",
         "Mental conditioning",
-        "Video analysis sessions",
         "Tournament participation",
       ],
-      price: "₹6,500/month",
+      price: "₹2,140/month",
     },
     {
-      title: "Professional Track Program",
+      title: "Elite",
       subtitle: "Path to Professional Football",
-      age: "19-25 years",
+      age: "U19 - U21",
       level: "Advanced to Elite",
-      duration: "Ongoing",
-      sessions: "6 sessions/week",
-      image: "https://images.unsplash.com/photo-1569196272637-2a7d9b21119e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHBsYXllciUyMGFjdGlvbiUyMGRhcmt8ZW58MXx8fHwxNzczODYwMjM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      description: "Elite program designed for athletes aspiring to play at professional and semi-professional levels.",
+      duration: "2 hours/session",
+      sessions: "5 sessions/week",
+      image: "/programs/elite.png",
+      imageClass: "scale-[1.2] origin-center",
+      description: "Elite program preparing athletes for professional careers, featuring high-intensity training and professional pathways.",
       features: [
         "Professional-level training",
         "Individualized development plans",
         "Strength & conditioning program",
-        "Nutrition and recovery support",
+        "Video analysis sessions",
         "Agent and club connections",
-        "Trial opportunities",
       ],
-      price: "₹8,500/month",
+      price: "₹2,520/quarter",
     },
     {
-      title: "Goalkeeper Specialist Program",
-      subtitle: "Master the Art of Goalkeeping",
-      age: "12-25 years",
-      level: "All Levels",
-      duration: "12 months",
-      sessions: "3 sessions/week",
-      image: "https://images.unsplash.com/photo-1769859178068-499236cb9a87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHN0YWRpdW0lMjBhdG1vc3BoZXJlfGVufDF8fHx8MTc3Mzg1MzIyNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      description: "Specialized training program focused exclusively on goalkeeper techniques, positioning, and match preparation.",
+      title: "Senior",
+      subtitle: "Senior Level Competition",
+      age: "U22 - U24",
+      level: "Elite",
+      duration: "2 hours/session",
+      sessions: "2 sessions/week",
+      image: "/programs/senior.png",
+      description: "Professional development and senior level competition. Focuses on maintaining peak physical condition and advanced match tactics.",
       features: [
-        "Shot-stopping techniques",
-        "Distribution and passing",
-        "One-on-one situations",
-        "Command of penalty area",
-        "Game reading skills",
-        "Physical conditioning",
+        "Senior match simulation",
+        "Advanced tactical mastery",
+        "High-performance conditioning",
+        "Nutrition and recovery support",
+        "Professional league placement assistance",
       ],
-      price: "₹5,500/month",
+      price: "₹1,920/quarter",
+    },
+    {
+      title: "Super Senior",
+      subtitle: "Experienced Player Development",
+      age: "Above 24",
+      level: "Advanced",
+      duration: "3 hours/session",
+      sessions: "2 sessions/week",
+      image: "/programs/supersenior.png",
+      description: "Advanced tactical play and leadership for experienced players. Great for those playing semi-pro or looking to maintain competitive fitness.",
+      features: [
+        "Veteran tactical play",
+        "Leadership on the pitch",
+        "Injury prevention & recovery",
+        "Competitive small-sided games",
+      ],
+      priceLabel: "Compensation",
+      price: "Performance-Based Salary",
+    },
+    {
+      title: "Parents Program",
+      subtitle: "Get Involved & Stay Fit",
+      age: "All Ages",
+      level: "All Levels",
+      duration: "2 hours/session",
+      sessions: "1 session/month",
+      image: "/programs/parents.jpeg",
+      description: "Fun activities, fitness training, and awareness programs designed specifically for parents to stay active while their kids train.",
+      features: [
+        "Recreational football",
+        "Fitness and wellness sessions",
+        "Sports nutrition awareness",
+        "Community building events",
+      ],
     },
   ];
 
@@ -140,11 +173,13 @@ export function Programs() {
                 <div className={index % 2 === 1 ? "md:col-start-2" : ""}>
                   <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-[#FF6B35] to-[#FFB800] rounded-2xl blur-2xl opacity-20" />
-                    <ImageWithFallback
-                      src={program.image}
-                      alt={program.title}
-                      className="relative rounded-2xl w-full h-[400px] object-cover"
-                    />
+                    <div className="relative w-full h-[400px] rounded-2xl overflow-hidden">
+                      <ImageWithFallback
+                        src={program.image}
+                        alt={program.title}
+                        className={`w-full h-full object-cover ${program.imageClass || ''}`}
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -179,15 +214,17 @@ export function Programs() {
                         <div className="text-white">{program.sessions}</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-gradient-to-br from-[#FF6B35] to-[#FFB800] rounded flex items-center justify-center">
-                        <span className="text-white text-xs">₹</span>
+                    {program.price && (
+                      <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 bg-gradient-to-br from-[#FF6B35] to-[#FFB800] rounded flex items-center justify-center">
+                          <span className="text-white text-xs">₹</span>
+                        </div>
+                        <div>
+                          <div className="text-sm text-gray-400">{program.priceLabel || "Investment"}</div>
+                          <div className="text-white">{program.price}</div>
+                        </div>
                       </div>
-                      <div>
-                        <div className="text-sm text-gray-400">Investment</div>
-                        <div className="text-white">{program.price}</div>
-                      </div>
-                    </div>
+                    )}
                   </div>
 
                   <div className="mb-8">
