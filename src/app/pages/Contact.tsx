@@ -29,7 +29,7 @@ export function Contact() {
     {
       icon: MapPin,
       title: "Location",
-      details: ["Chola FC Sports Complex", "Anna Nagar, Chennai", "Tamil Nadu 600040, India"],
+      details: ["Chola FC, 7A, Jalvayu Vihar", "Yeswanth Nagar, Selaiyur", "Chennai, Tamil Nadu 600126"],
     },
     {
       icon: Clock,
@@ -187,8 +187,8 @@ export function Contact() {
               <div className="bg-[#12172E] border border-white/10 rounded-2xl overflow-hidden mb-6 h-[300px] flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="text-[#FF6B35] mx-auto mb-3" size={48} />
-                  <p className="text-gray-300">Chola FC Sports Complex</p>
-                  <p className="text-gray-400 text-sm">Anna Nagar, Chennai</p>
+                  <p className="text-gray-300">Chola FC</p>
+                  <p className="text-gray-400 text-sm">7A, Jalvayu Vihar, Yeswanth Nagar, Selaiyur, Chennai</p>
                 </div>
               </div>
 
