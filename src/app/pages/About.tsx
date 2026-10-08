@@ -32,13 +32,13 @@ export function About() {
       name: "Gowreesh A M",
       role: "Director & Club Secretary",
       image: "/coaches/gowreesh.jpeg",
-      imageClass: "object-cover object-top -translate-y-6",
+      imageClass: "object-cover object-top -translate-y-[5%]",
     },
     {
       name: "Mohan Prasanth B",
       role: "Director & Team Manager",
       image: "/coaches/mohan.png",
-      imageClass: "object-cover object-top scale-[3.0] origin-top -translate-y-36",
+      imageClass: "object-cover object-top scale-[3.0] origin-top -translate-y-[25%]",
     },
   ];
 
@@ -210,14 +210,14 @@ export function About() {
               The visionaries behind Chola FC's success
             </p>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
+          <div className="max-w-xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
               {directors.map((director, index) => (
                 <div
                   key={index}
                   className="bg-[#0A0E27] border border-white/10 rounded-2xl overflow-hidden hover:border-[#FF6B35] transition-all group"
                 >
-                  <div className="h-[400px] overflow-hidden relative">
+                  <div className="aspect-[4/5] w-full overflow-hidden relative">
                     <ImageWithFallback
                       src={director.image}
                       alt={director.name}
@@ -225,8 +225,8 @@ export function About() {
                     />
                     <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A0E27] to-transparent opacity-90" />
                   </div>
-                  <div className="p-8 relative bg-[#0A0E27] -mt-4">
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#FF6B35] transition-colors text-center">
+                  <div className="p-4 relative bg-[#0A0E27] -mt-4">
+                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#FF6B35] transition-colors text-center">
                       {director.name}
                     </h3>
                     <div className="text-[#FFB800] text-sm font-semibold text-center">{director.role}</div>
