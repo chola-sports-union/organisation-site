@@ -27,6 +27,21 @@ export function About() {
     },
   ];
 
+  const directors = [
+    {
+      name: "Gowreesh A M",
+      role: "Director & Club Secretary",
+      image: "/coaches/gowreesh.jpeg",
+      imageClass: "object-cover object-top -translate-y-6",
+    },
+    {
+      name: "Mohan Prasanth B",
+      role: "Director & Team Manager",
+      image: "/coaches/mohan.png",
+      imageClass: "object-cover object-top scale-[3.0] origin-top -translate-y-36",
+    },
+  ];
+
   const coaches = [
     {
       name: "Mohan Prasanth B",
@@ -186,8 +201,45 @@ export function About() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Leadership Section */}
       <section className="py-20 bg-[#12172E]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Leadership</h2>
+            <p className="text-gray-300 text-lg">
+              The visionaries behind Chola FC's success
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12">
+              {directors.map((director, index) => (
+                <div
+                  key={index}
+                  className="bg-[#0A0E27] border border-white/10 rounded-2xl overflow-hidden hover:border-[#FF6B35] transition-all group"
+                >
+                  <div className="h-[400px] overflow-hidden relative">
+                    <ImageWithFallback
+                      src={director.image}
+                      alt={director.name}
+                      className={`w-full h-full ${director.imageClass}`}
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A0E27] to-transparent opacity-90" />
+                  </div>
+                  <div className="p-8 relative bg-[#0A0E27] -mt-4">
+                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#FF6B35] transition-colors text-center">
+                      {director.name}
+                    </h3>
+                    <div className="text-[#FFB800] text-sm font-semibold text-center">{director.role}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-[#0A0E27]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Meet Our Coaches</h2>
