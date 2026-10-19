@@ -27,6 +27,7 @@ export function About() {
     },
   ];
 
+  /* Leadership data - Disabled
   const directors = [
     {
       name: "Gowreesh A M",
@@ -41,6 +42,7 @@ export function About() {
       imageClass: "object-cover object-top scale-[3.0] origin-top -translate-y-[25%]",
     },
   ];
+  */
 
   const coaches = [
     {
@@ -201,7 +203,8 @@ export function About() {
         </div>
       </section>
 
-      {/* Leadership Section */}
+      {/* Leadership Section - Disabled */}
+      {/*
       <section className="py-20 bg-[#12172E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -237,6 +240,7 @@ export function About() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Team Section */}
       <section className="py-20 bg-[#0A0E27]">
